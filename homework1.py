@@ -38,6 +38,8 @@ def show_result(y):
     print(y)
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
+    plt.xlabel('x1')
+    plt.ylabel('x2')
     ax.plot(y[:n - m, 0], y[:n - m, 1], y[:n - m, 2], color='blue', label='parametric curve')
     ax.plot(y[n - m:, 0], y[n - m:, 1], y[n - m:, 2], color='pink', label='parametric curve')
     ax.scatter(y[0, 0], y[0, 1], y[0, 2], s=[20], color='red')
