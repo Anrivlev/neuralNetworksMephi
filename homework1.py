@@ -95,7 +95,20 @@ def chaos_example():
                        [1, 0, 0.5, 0],
                        [0, -3.6, 0, 3.6]])
     x = x3
-    activation_funcs = np.array([a_func3, a_func1, a_func4])
+    activation_funcs = np.array([a_func3, a_func1, a_func0])
+
+    y = calculate_async(coeffs, activation_funcs, x, y0, n)
+    show_result(y)
+
+
+def beautiful_example():
+    y0 = np.array([0.1, 0.1, 0.1])  # initial condition, shown as a red dot
+    # [X, 1, 2, 3], i - i'th neuron
+    coeffs = np.array([[1, -0.5, 0.2, 0.7],
+                       [-1, -0.4, 0.1, -0.5],
+                       [0, -0.3, 1.2, 0.5]])
+    x = x1
+    activation_funcs = np.array([a_func0, a_func0, a_func0])
 
     y = calculate_async(coeffs, activation_funcs, x, y0, n)
     show_result(y)
@@ -121,9 +134,9 @@ x1 = lambda t: 0
 x2 = lambda t: 1./t
 x3 = lambda t: np.sin((np.pi * t)/10)
 # Various activation functions:
+a_func0 = lambda h: h
 a_func1 = lambda h: np.tanh(h)
 a_func2 = lambda h: norm.pdf(h, scale=1)
 a_func3 = lambda h: h**2
-a_func4 = lambda h: h
 
-example()
+beautiful_example()
