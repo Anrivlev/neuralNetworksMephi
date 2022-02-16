@@ -105,9 +105,9 @@ def example():
     y0 = np.array([0.1, 0.1, 0.1])  # initial condition, shown as a red dot
     # [X, 1, 2, 3], i - i'th neuron
     coeffs = np.array([[1, -0.5, 0.2, 0.7],
-                       [-1, -0.4, 0.1, 1.2],
-                       [0, -0.3, -0.5, 0.5]])
-    x = x2
+                       [-1, -0.4, 0.1, -0.5],
+                       [0, -0.3, 1.2, 0.5]])
+    x = x1
     activation_funcs = np.array([a_func1, a_func2, a_func1])
 
     y = calculate_sync(coeffs, activation_funcs, x, y0, n)
@@ -126,4 +126,4 @@ a_func2 = lambda h: norm.pdf(h, scale=1)
 a_func3 = lambda h: h**2
 a_func4 = lambda h: h
 
-chaos_example()
+example()
