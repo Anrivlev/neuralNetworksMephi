@@ -110,7 +110,7 @@ def beautiful_example():
     x = x1
     activation_funcs = np.array([a_func0, a_func0, a_func0])
 
-    y = calculate_async(coeffs, activation_funcs, x, y0, n)
+    y = calculate_sync(coeffs, activation_funcs, x, y0, n)
     show_result(y)
 
 
