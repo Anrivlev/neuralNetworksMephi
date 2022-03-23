@@ -42,18 +42,14 @@ ax = plt.axes(xlim=(x1_min, x1_max), ylim=(x2_min, x2_max))
 line, = ax.plot([], [], lw=3)
 plt.grid()
 
-def init():
-    line.set_data([], [])
-    return line,
+camera = Camera(fig)
+for i in range(N):
+    x2_range = - (w[i][0] + w[i][1] * x1_range) / (w[i][2])
+    plt.plot(x1_range, x2_range)
+    plt.plot(sample[:, 1], sample[:, 2], linestyle='None', marker='o')
+    plt.legend(str(i))
+    camera.snap()
 
+animation = camera.animate()
 
-def animate(i):
-    x1 = x1_range
-    x2 = - (w[i][0] + w[i][1] * x1_range) / (w[i][2])
-    line.set_data(x1, x2)
-    return line,
-
-
-anim = FuncAnimation(fig, animate, init_func=init, frames=N, interval=500, blit=True)
-
-anim.save('solution.gif', writer='imagemagick')
+animation.save('solution.gif', writer='imagemagick')
